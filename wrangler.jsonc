@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "progreso-shore-excursions",
+  "compatibility_date": "2026-06-09",
+  "observability": { "enabled": true },
+  "assets": { "directory": "." },
+  "routes": [{ "pattern": "progresoshoreexcursion.com", "custom_domain": true }]
+}
