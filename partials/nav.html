@@ -1,7 +1,7 @@
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 border-b border-pr-100 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-12">
-      <a href="index.html" class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
         <div class="w-7 h-7 rounded-full btn-ocean flex items-center justify-center">
           <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
@@ -10,20 +10,33 @@
         <span class="font-display font-semibold text-ocean-800 text-base leading-tight">Progreso<br/><span class="text-[10px] font-body font-normal text-pr-600 tracking-widest uppercase">Shore Excursion</span></span>
       </a>
       <div class="hidden lg:flex items-center gap-5 text-sm font-medium">
-        <a href="index.html" data-nav="home" class="text-gray-600 hover:text-ocean-600 transition-colors">Home</a>
-        <a href="best-progreso-shore-excursions.html" data-nav="excursions" class="text-gray-600 hover:text-ocean-600 transition-colors">Excursions</a>
-        <a href="chichen-itza-shore-excursion-progreso.html" data-nav="chichen" class="text-gray-600 hover:text-ocean-600 transition-colors">Chichen Itza</a>
-        <a href="uxmal-shore-excursion-progreso.html" data-nav="uxmal" class="text-gray-600 hover:text-ocean-600 transition-colors">Uxmal</a>
-        <a href="merida-city-shore-excursion-progreso.html" data-nav="merida" class="text-gray-600 hover:text-ocean-600 transition-colors">Merida</a>
-        <a href="cenote-shore-excursion-progreso.html" data-nav="cenote" class="text-gray-600 hover:text-ocean-600 transition-colors">Cenotes</a>
-        <a href="progreso-cruise-port-guide.html" data-nav="port" class="text-gray-600 hover:text-ocean-600 transition-colors">Port Guide</a>
+        <a href="/" data-nav="home" class="text-gray-600 hover:text-ocean-600 transition-colors">Home</a>
+        <a href="/best-progreso-shore-excursions" data-nav="excursions" class="text-gray-600 hover:text-ocean-600 transition-colors">Excursions</a>
+        <a href="/progreso-cruise-port-guide" data-nav="port" class="text-gray-600 hover:text-ocean-600 transition-colors">Port Guide</a>
+        <a href="/uxmal-shore-excursion-progreso" data-nav="uxmal" class="text-gray-600 hover:text-ocean-600 transition-colors">Uxmal</a>
+        <a href="/chichen-itza-shore-excursion-progreso" data-nav="chichen" class="text-gray-600 hover:text-ocean-600 transition-colors">Chichén Itzá</a>
+        <a href="/contact" data-nav="contact" class="text-gray-600 hover:text-ocean-600 transition-colors">Contact</a>
       </div>
-      <a href="best-progreso-shore-excursions.html" class="hidden md:inline-flex items-center gap-2 btn-ocean text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md">
-        View Progreso Excursions
+      <a href="/best-progreso-shore-excursions" class="hidden md:inline-flex items-center gap-2 btn-ocean text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md">
+        Compare Excursions
       </a>
-      <button type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-sand-50" aria-label="Open menu">
+      <button type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-sand-50" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel" id="mobile-nav-toggle">
         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
+    </div>
+  </div>
+  <div id="mobile-nav-panel" data-mobile-panel="true" class="lg:hidden hidden border-t border-pr-100 bg-white px-4 py-3" hidden>
+    <div class="flex flex-col gap-1 text-sm font-medium">
+      <a href="/" class="py-2 text-gray-700 hover:text-ocean-600">Home</a>
+      <a href="/best-progreso-shore-excursions" class="py-2 text-gray-700 hover:text-ocean-600">Best Excursions</a>
+      <a href="/progreso-cruise-port-guide" class="py-2 text-gray-700 hover:text-ocean-600">Port Guide</a>
+      <a href="/uxmal-shore-excursion-progreso" class="py-2 text-gray-700 hover:text-ocean-600">Uxmal</a>
+      <a href="/chichen-itza-shore-excursion-progreso" class="py-2 text-gray-700 hover:text-ocean-600">Chichén Itzá</a>
+      <a href="/merida-city-shore-excursion-progreso" class="py-2 text-gray-700 hover:text-ocean-600">Mérida</a>
+      <a href="/cenote-shore-excursion-progreso" class="py-2 text-gray-700 hover:text-ocean-600">Cenotes</a>
+      <a href="/one-day-in-progreso-from-a-cruise-ship" class="py-2 text-gray-700 hover:text-ocean-600">One Day</a>
+      <a href="/progreso-shore-excursions-faq" class="py-2 text-gray-700 hover:text-ocean-600">FAQ</a>
+      <a href="/contact" class="py-2 text-gray-700 hover:text-ocean-600">Contact</a>
     </div>
   </div>
 </nav>

@@ -1,57 +1,58 @@
 /**
- * Loads shared layout partials. Requires a local server (not file://).
- * Set on <body>: data-base, data-page, data-hero (optional), data-content (optional)
+ * Progressive enhancement for inlined static pages.
+ * Mobile nav: native button, aria-expanded, Escape close.
  */
 (function () {
-  function basePath() {
-    const base = document.body.dataset.base;
-    if (base === undefined || base === '') return '';
-    return base.endsWith('/') ? base : base + '/';
-  }
-
-  async function loadInto(id, url) {
-    const el = document.getElementById(id);
-    if (!el || !url) return;
-
-    try {
-      const res = await fetch(basePath() + url);
-      if (!res.ok) throw new Error(res.statusText);
-      el.innerHTML = await res.text();
-    } catch (err) {
-      console.error('Layout load failed:', url, err);
-      el.innerHTML =
-        '<p class="p-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg">Could not load ' +
-        url +
-        '. Run the site with a local server, e.g. <code class="text-xs">python3 -m http.server</code>.</p>';
-    }
-  }
-
   function setActiveNav() {
     const page = document.body.dataset.page;
     if (!page) return;
-
     document.querySelectorAll('[data-nav]').forEach(function (link) {
       const isActive = link.dataset.nav === page;
       link.classList.toggle('text-ocean-600', isActive);
       link.classList.toggle('font-semibold', isActive);
       link.classList.toggle('text-gray-600', !isActive);
       if (isActive) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
   }
 
-  document.addEventListener('DOMContentLoaded', async function () {
-    const hero = document.body.dataset.hero;
-    const content = document.body.dataset.content;
-    const trustStrip = document.body.dataset.trustStrip;
+  function wireMobileNav() {
+    const nav = document.querySelector('#site-nav nav');
+    if (!nav) return;
+    const btn = nav.querySelector('#mobile-nav-toggle, button[aria-controls="mobile-nav-panel"]');
+    const panel = nav.querySelector('#mobile-nav-panel, [data-mobile-panel]');
+    if (!btn || !panel) return;
+    if (btn.dataset.wired === 'true') return;
+    btn.dataset.wired = 'true';
 
-    await Promise.all([
-      loadInto('site-nav', 'partials/nav.html'),
-      loadInto('site-footer', 'partials/footer.html'),
-      loadInto('page-hero', hero),
-      loadInto('page-trust-strip', trustStrip),
-      loadInto('page-content', content),
-    ]);
+    function setOpen(open) {
+      panel.classList.toggle('hidden', !open);
+      if (open) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
 
+    setOpen(false);
+
+    btn.addEventListener('click', function () {
+      const open = panel.classList.contains('hidden');
+      setOpen(open);
+    });
+
+    panel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
     setActiveNav();
+    wireMobileNav();
   });
 })();

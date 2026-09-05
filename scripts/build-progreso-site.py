@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""DEPRECATED for Phase 10B+. Use scripts/assemble-pages.py instead.
+
+This legacy generator emits CSR shells and .html canonicals — do not run for production.
+"""
+raise SystemExit("Deprecated: run python3 scripts/assemble-pages.py")
+
+#!/usr/bin/env python3
 """Generate Progreso Shore Excursion static site pages."""
 from __future__ import annotations
 import json
