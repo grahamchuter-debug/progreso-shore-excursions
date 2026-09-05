@@ -11,5 +11,15 @@
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page",
     "run_worker_first": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "progresoshoreexcursion.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.progresoshoreexcursion.com",
+      "custom_domain": true
+    }
+  ]
 }
